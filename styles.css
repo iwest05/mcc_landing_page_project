@@ -8,35 +8,41 @@ html, body {
     overflow: hidden;
     overflow-y: auto;
     font-family: sans-serif, 'Open Sans';
+    scroll-behavior: smooth;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
     min-height: 100vh;
     background-image: url('assets/background/original_lowered_brightness.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
+    justify-content: center;
+    align-items: flex-start;
     overflow-y: auto;
 }
+
 /* ================================================
    PAGE STRUCTURE
 ================================================ */
+.header-bar {
+    position: fixed;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+}
+
 .page-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-}
-
-.header-bar {
-    width: 100%;
-    text-align: center;
-    color: white;
-    margin-bottom: 20px;
+    margin-top: 120px;
 }
 
 .header-bar h1 {
@@ -59,7 +65,8 @@ body {
     width: 80%;
     margin-bottom: 20px;
     background-color: rgba(0, 0, 0, 0.7);
-    overflow: visible; /* important for hover scaling */
+    overflow: visible;
+    scroll-margin-top: 120px;
 }
 
 /* ================================================
@@ -226,7 +233,32 @@ a:active {
 }
 
 /* ================================================
-   MEDIA QUERIES
+   FOOTER
+================================================ */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #ddd;
+}
+
+.social-icons img {
+    vertical-align: middle;
+    width: 90px;
+    height: 30px;
+    margin: 0 6px;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+.social-icons img:hover {
+    opacity: 1;
+}
+
+
+
+
+/* ================================================
+   MEDIA QUERIES FOR MAIN CONTAINER
 ================================================ */
 @media screen and (max-width: 470px) {
     .container {
@@ -234,10 +266,20 @@ a:active {
     }
 }
 
+
+
+
+
+
+
 /* ================================================
    MEDIA QUERIES DESKTOP
 ================================================ */
 @media screen and (min-width: 930px) {
+
+    /* ================================================
+        MAIN CONTAINER
+    ================================================ */
     .container {
         flex-direction: row;
         padding: 20px;
@@ -245,6 +287,9 @@ a:active {
         max-width: 1200px;
     }
 
+    /* ================================================
+        LEFT SECTIONS
+    ================================================ */
     .left {
         flex: 1;
         display: flex;
@@ -252,6 +297,9 @@ a:active {
         gap: 15px;
     }
 
+    /* ================================================
+        MOVIE POSTER (BIG BOX)
+    ================================================ */
     .big-box {
         flex: 1;
         max-width: 400px;
@@ -263,6 +311,9 @@ a:active {
         max-height: 400px;
     }
 
+    /* ================================================
+        STREAMING SERVICE ICONS (SMALL BOXES)
+    ================================================ */
     .small-boxes {
         display: flex;
         justify-content: space-between;
@@ -284,6 +335,9 @@ a:active {
         justify-content: center;
     }
 
+    /* ================================================
+        CAST CARDS
+    ================================================ */
     .cards .card {
         flex: 1 1 calc(50% - 10px);
         max-width: calc(50% - 10px);
